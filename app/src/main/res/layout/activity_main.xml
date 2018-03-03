@@ -7,129 +7,151 @@
     tools:context="com.example.oalex.dailytasktracker.MainActivity">
 
     <LinearLayout
-        android:id="@+id/layout_cur_task_name"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/cur_task_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="32sp"
-            android:text="Sleep"/>
-
-        <TextView
-            android:id="@+id/cur_task_div"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginLeft="2dp"
-            android:textSize="30sp"
-            android:text=" - "/>
-
-        <TextView
-            android:id="@+id/cur_task_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginLeft="2dp"
-            android:textSize="28sp"
-            android:text="Mandatory"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_cur_task_time"
-        app:layout_constraintTop_toBottomOf="@+id/layout_cur_task_name"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="12dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/cur_task_time_hr"
+        <LinearLayout
+            android:id="@+id/layout_cur_task_name"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="64sp"
-            android:text="3"/>
+            android:orientation="horizontal">
 
-        <TextView
+            <TextView
+                android:id="@+id/cur_task_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32sp"
+                android:text="Sleep"/>
+
+            <TextView
+                android:id="@+id/cur_task_div"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginLeft="2dp"
+                android:textSize="30sp"
+                android:text=" - "/>
+
+            <TextView
+                android:id="@+id/cur_task_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginLeft="2dp"
+                android:textSize="28sp"
+                android:text="Mandatory"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_cur_task_time"
+            android:layout_marginTop="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="32sp"
-            android:text="hr"/>
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/cur_task_time_min"
+            <TextView
+                android:id="@+id/cur_task_time_hr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="64sp"
+                android:text="3"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32sp"
+                android:text="hr"/>
+
+            <TextView
+                android:id="@+id/cur_task_time_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginLeft="18dp"
+                android:textSize="64sp"
+                android:text="42"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32sp"
+                android:text="min"/>
+        </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/layout_cur_task_start_time"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:layout_marginLeft="18dp"
-            android:textSize="64sp"
-            android:text="42"/>
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="Started at "/>
+
+            <TextView
+                android:id="@+id/cur_task_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="11:23pm"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_cur_task_day_total"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="32sp"
-            android:text="min"/>
-    </LinearLayout>
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/layout_cur_task_start_time"
-        app:layout_constraintTop_toBottomOf="@+id/layout_cur_task_time"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="Daily Total: "/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="Started at "/>
+            <TextView
+                android:id="@+id/cur_task_day_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="5hr 23min"/>
+        </LinearLayout>
+            </RelativeLayout>
 
-        <TextView
-            android:id="@+id/cur_task_start_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="11:23pm"/>
-    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layout_cur_task_day_total"
-        app:layout_constraintTop_toBottomOf="@+id/layout_cur_task_time"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="Daily Total: "/>
-
-        <TextView
-            android:id="@+id/cur_task_day_total"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="5hr 23min"/>
+        <ListView
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_cur_task_day_total"
+            android:layout_weight = "1"
+            android:id="@+id/list_schedule"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scrollbars="vertical" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
