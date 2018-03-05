@@ -1,12 +1,15 @@
 package com.example.oalex.dailytasktracker;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -44,13 +47,24 @@ public class ListScheduleAdapter extends BaseAdapter {
         //Get view for row item
         View rowView = mInflater.inflate(R.layout.schedule_list_row, parent, false);
 
-        TextView timeTextView =(TextView) rowView.findViewById(com.example.oalex.dailytasktracker.R.id.schedule_list_row_time);
-        TextView taskTextView = (TextView) rowView.findViewById(R.id.schedule_list_row_name);
+        TextView timeTextView =(TextView) rowView.findViewById(R.id.schedule_list_row_time);
+        TextView taskNameTextView = (TextView) rowView.findViewById(R.id.schedule_list_row_name);
+        TextView taskDurationTextView = (TextView) rowView.findViewById(R.id.schedule_list_row_duration);
+        LinearLayout taskLayout = (LinearLayout) rowView.findViewById(R.id.schedule_list_row_task_layout);
 
         Task task = (Task) getItem(position);
 
-        timeTextView.setText(task.time);
-        taskTextView.setText(task.name + " - " + task.category);
+        SimpleDateFormat dateTimeFormat = new SimpleDateFormat("hh:mm a");
+        timeTextView.setText(dateTimeFormat.format(task.startTime));
+
+        taskNameTextView.setText(task.name + " - " + task.category);
+        taskNameTextView.setTextColor(Color.parseColor(task.textColor));
+
+        taskDurationTextView.setText("(" + task.duration +")");
+        taskDurationTextView.setTextColor(Color.parseColor(task.textColor));
+
+        taskLayout.setBackgroundColor(Color.parseColor(task.backgroundColor));
+
         return rowView;
     }
 }
