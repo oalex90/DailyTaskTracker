@@ -30,11 +30,12 @@
         android:background="#ff0000"
         android:layout_marginRight="5dp"
         android:layout_marginEnd="5dp"
+        android:clickable="true"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/schedule_list_row_name"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="16sp"
             android:textColor="#ffffff"
@@ -42,11 +43,38 @@
             android:text="Sleep: Mandatory" />
         <TextView
             android:id="@+id/schedule_list_row_duration"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="14sp"
             android:textColor="#ffffff"
             android:gravity="center"
             android:text="(8 hours 25 minutes)" />
+        <TextView
+            android:id="@+id/schedule_list_row_start_end_time"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="14sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="12:00am - 8:32am" />
+        <TextView
+            android:id="@+id/schedule_list_row_daily_total"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="14sp"
+            android:textColor="#ffffff"
+            android:visibility="gone"
+            android:gravity="center"
+            android:text="Daily Total: 3 hours 25 minutes" />
+        <Button
+            android:id="@+id/schedule_list_row_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:textSize="14sp"
+            android:text="Edit"/>
     </LinearLayout>
+
 </LinearLayout>

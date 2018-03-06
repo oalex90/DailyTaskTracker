@@ -2,8 +2,11 @@ package com.example.oalex.dailytasktracker;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         scheduleTasks.add(new Task("Watch Soccer", "Entertainment", new Date(2018, 3, 4, 17, 40), new Date(2018, 3, 4, 18, 4)));
         scheduleTasks.add(new Task("Shower", "Mandatory", new Date(2018, 3, 4, 18, 4), new Date(2018, 3, 4, 18, 35)));
         scheduleTasks.add(new Task("Dinner", "Mandatory", new Date(2018, 3, 4, 18, 35), new Date(2018, 3, 4, 19, 2)));
-        scheduleTasks.add(new Task("Game of Thrones", "Social Interaction", new Date(2018, 3, 4, 19, 2), new Date(2018, 3, 4, 20, 47)));
+        scheduleTasks.add(new Task("Game of Thrones", "Social", new Date(2018, 3, 4, 19, 2), new Date(2018, 3, 4, 20, 47)));
         scheduleTasks.add(new Task("Rocket League", "Entertainment", new Date(2018, 3, 4, 20, 47), new Date(2018, 3, 4, 22, 56)));
         scheduleTasks.add(new Task("Twitch", "Entertainment", new Date(2018, 3, 4, 22, 56), new Date(2018, 3, 5, 0, 0)));
         scheduleTasks.add(new Task("Sleep", "Mandatory", new Date(2018, 3, 5, 0, 0), new Date(2018, 3, 5, 8, 4)));
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         scheduleTasks.add(new Task("Watch Soccer", "Entertainment", new Date(2018, 3, 5, 17, 40), new Date(2018, 3, 5, 18, 4)));
         scheduleTasks.add(new Task("Shower", "Mandatory", new Date(2018, 3, 5, 18, 4), new Date(2018, 3, 5, 18, 35)));
         scheduleTasks.add(new Task("Dinner", "Mandatory", new Date(2018, 3, 5, 18, 35), new Date(2018, 3, 5, 19, 2)));
-        scheduleTasks.add(new Task("Game of Thrones", "Social Interaction", new Date(2018, 3, 5, 19, 2), new Date(2018, 3, 5, 20, 47)));
+        scheduleTasks.add(new Task("Game of Thrones", "Social", new Date(2018, 3, 5, 19, 2), new Date(2018, 3, 5, 20, 47)));
         scheduleTasks.add(new Task("Rocket League", "Entertainment", new Date(2018, 3, 5, 20, 47), new Date(2018, 3, 5, 22, 56)));
         scheduleTasks.add(new Task("Twitch", "Entertainment", new Date(2018, 3, 5, 22, 56), new Date(2018, 3, 6, 0, 0)));
         scheduleTasks.add(new Task("Sleep", "Mandatory", new Date(2018, 3, 6, 0, 0), new Date(2018, 3, 6, 8, 4)));
@@ -62,13 +65,13 @@ public class MainActivity extends AppCompatActivity {
         scheduleTasks.add(new Task("Watch Soccer", "Entertainment", new Date(2018, 3, 6, 17, 40), new Date(2018, 3, 6, 18, 4)));
         scheduleTasks.add(new Task("Shower", "Mandatory", new Date(2018, 3, 6, 18, 4), new Date(2018, 3, 6, 18, 35)));
         scheduleTasks.add(new Task("Dinner", "Mandatory", new Date(2018, 3, 6, 18, 35), new Date(2018, 3, 6, 19, 2)));
-        scheduleTasks.add(new Task("Game of Thrones", "Social Interaction", new Date(2018, 3, 6, 19, 2), new Date(2018, 3, 6, 20, 47)));
+        scheduleTasks.add(new Task("Game of Thrones", "Social", new Date(2018, 3, 6, 19, 2), new Date(2018, 3, 6, 20, 47)));
         scheduleTasks.add(new Task("Rocket League", "Entertainment", new Date(2018, 3, 6, 20, 47), new Date(2018, 3, 6, 22, 56)));
         scheduleTasks.add(new Task("Twitch", "Entertainment", new Date(2018, 3, 6, 22, 56), new Date(2018, 3, 7, 0, 0)));
 
 
         ListScheduleAdapter adapter = new ListScheduleAdapter(this, scheduleTasks);
         scheduleListView.setAdapter(adapter);
-
     }
+
 }

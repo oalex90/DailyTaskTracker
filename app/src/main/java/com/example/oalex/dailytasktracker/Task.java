@@ -46,7 +46,7 @@ public class Task {
                 this.backgroundColor = "#ff9900";
                 this.textColor = "#000000";
                 break;
-            case "Social Interaction":
+            case "Social":
                 this.backgroundColor = "#00ffff";
                 this.textColor = "#000000";
                 break;
