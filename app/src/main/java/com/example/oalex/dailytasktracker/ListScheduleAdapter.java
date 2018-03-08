@@ -1,5 +1,8 @@
 package com.example.oalex.dailytasktracker;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -79,6 +82,7 @@ public class ListScheduleAdapter extends BaseAdapter {
         taskLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("Task Clicked");
 
                 TextView startEndTimeTextView = (TextView) view.findViewById(R.id.schedule_list_row_start_end_time);
                 TextView dailyTotalTextView = (TextView) view.findViewById(R.id.schedule_list_row_daily_total);
@@ -94,6 +98,16 @@ public class ListScheduleAdapter extends BaseAdapter {
                     dailyTotalTextView.setVisibility(View.GONE);
                     editButton.setVisibility(View.GONE);
                 }
+            }
+        });
+
+        editButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                System.out.println("Button Clicked");
+                final Dialog dialog = new Dialog(mContext);
+                dialog.setContentView(R.layout.edit_task_dialog);
+
             }
         });
 
