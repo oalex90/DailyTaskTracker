@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -101,12 +103,61 @@ public class ListScheduleAdapter extends BaseAdapter {
             }
         });
 
+        System.out.println("Edit Button Id: " + editButton.getId());
         editButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                System.out.println("Edit Clicked");
+                LinearLayout parentLayout=(LinearLayout) view.getParent();
+                final TextView taskNameTextView = (TextView) parentLayout.findViewById(R.id.schedule_list_row_name);
+                final TextView startEndTimeTextView = (TextView) parentLayout.findViewById(R.id.schedule_list_row_start_end_time);
+
+                String taskNameAndCategory[] = taskNameTextView.getText().toString().split(" - ", 2);
+                String taskName = taskNameAndCategory[0];
+                String taskCategory = taskNameAndCategory[1];
+
+                String taskStartAndEndTime[] = startEndTimeTextView.getText().toString().split(" - ", 2);
+                String taskStartTime = taskStartAndEndTime[0];
+                String taskEndTime = taskStartAndEndTime[1];
+
+
+
+
                 System.out.println("Button Clicked");
-                final Dialog dialog = new Dialog(mContext);
-                dialog.setContentView(R.layout.edit_task_dialog);
+                AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
+                LayoutInflater inflater = LayoutInflater.from(mContext);
+                View alertView = inflater.inflate(R.layout.edit_task_dialog, null);
+
+                EditText taskNameEditView = alertView.findViewById(R.id.edit_text_task_name);
+                EditText taskCategoryEditView = alertView.findViewById(R.id.edit_text_task_category);
+                EditText taskStartTimeEditView = alertView.findViewById(R.id.edit_text_task_start_time);
+                EditText taskEndTimeEditView = alertView.findViewById(R.id.edit_text_task_end_time);
+
+                taskNameEditView.setText(taskName);
+                taskCategoryEditView.setText(taskCategory);
+                taskStartTimeEditView.setText(taskStartTime);
+                taskEndTimeEditView.setText(taskEndTime);
+                alertDialog.setView(alertView);
+
+                alertDialog.setTitle("Edit Task");
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Confirm", new DialogInterface.OnClickListener(){
+                   public void onClick(DialogInterface dialog, int which){
+                       EditText taskNameEditView = ((AlertDialog) dialog).findViewById(R.id.edit_text_task_name);
+                       EditText taskCategoryEditView = ((AlertDialog) dialog).findViewById(R.id.edit_text_task_category);
+                       EditText taskStartTimeEditView = ((AlertDialog) dialog).findViewById(R.id.edit_text_task_start_time);
+                       EditText taskEndTimeEditView = ((AlertDialog) dialog).findViewById(R.id.edit_text_task_end_time);
+                       taskNameTextView.setText(taskNameEditView.getText().toString() + " - " + taskCategoryEditView.getText().toString());
+                       startEndTimeTextView.setText(taskStartTimeEditView.getText().toString() + " - " + taskEndTimeEditView.getText().toString());
+
+                       dialog.dismiss();
+                   }
+                });
+                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int which){
+                        dialog.dismiss();
+                    }
+                });
+                alertDialog.show();
 
             }
         });
