@@ -54,41 +54,41 @@ public class ListScheduleAdapter extends BaseAdapter {
         //Get view for row item
         View rowView = mInflater.inflate(R.layout.schedule_list_row, parent, false);
 
-        TextView timeTextView =(TextView) rowView.findViewById(R.id.schedule_list_row_time);
-        TextView taskNameTextView = (TextView) rowView.findViewById(R.id.schedule_list_row_name);
-        TextView taskDurationTextView = (TextView) rowView.findViewById(R.id.schedule_list_row_duration);
-        TextView startEndTimeTextView = (TextView) rowView.findViewById(R.id.schedule_list_row_start_end_time);
-        TextView dailyTotalTextView = (TextView) rowView.findViewById(R.id.schedule_list_row_daily_total);
-        Button editButton = (Button) rowView.findViewById(R.id.schedule_list_row_edit);
-        LinearLayout taskLayout = (LinearLayout) rowView.findViewById(R.id.schedule_list_row_task_layout);
+        final TextView timeTextView =(TextView) rowView.findViewById(R.id.schedule_list_row_time);
+        final TextView taskNameTextView = (TextView) rowView.findViewById(R.id.schedule_list_row_name);
+        final TextView taskDurationTextView = (TextView) rowView.findViewById(R.id.schedule_list_row_duration);
+        final TextView startEndTimeTextView = (TextView) rowView.findViewById(R.id.schedule_list_row_start_end_time);
+        final TextView dailyTotalTextView = (TextView) rowView.findViewById(R.id.schedule_list_row_daily_total);
+        final Button editButton = (Button) rowView.findViewById(R.id.schedule_list_row_edit);
+        final LinearLayout taskLayout = (LinearLayout) rowView.findViewById(R.id.schedule_list_row_task_layout);
 
-        Task task = (Task) getItem(position);
+        final Task task = (Task) getItem(position);
 
         SimpleDateFormat dateTimeFormat = new SimpleDateFormat("hh:mm a", Locale.US);
-        timeTextView.setText(dateTimeFormat.format(task.startTime));
+        timeTextView.setText(dateTimeFormat.format(task.getStartTime()));
 
-        taskNameTextView.setText(task.name + " - " + task.category);
-        taskNameTextView.setTextColor(Color.parseColor(task.textColor));
+        taskNameTextView.setText(task.getName() + " - " + task.getCategory());
+        taskNameTextView.setTextColor(Color.parseColor(task.calcTextColor()));
 
-        taskDurationTextView.setText("(" + task.duration +")");
-        taskDurationTextView.setTextColor(Color.parseColor(task.textColor));
+        taskDurationTextView.setText("(" + task.calcDuration() +")");
+        taskDurationTextView.setTextColor(Color.parseColor(task.calcTextColor()));
 
-        startEndTimeTextView.setText(dateTimeFormat.format(task.startTime) + " - " + dateTimeFormat.format(task.endTime));
-        startEndTimeTextView.setTextColor(Color.parseColor(task.textColor));
+        startEndTimeTextView.setText(dateTimeFormat.format(task.getStartTime()) + " - " + dateTimeFormat.format(task.getEndTime()));
+        startEndTimeTextView.setTextColor(Color.parseColor(task.calcTextColor()));
 
         dailyTotalTextView.setText("3 hours 25 minutes");
-        dailyTotalTextView.setTextColor(Color.parseColor(task.textColor));
+        dailyTotalTextView.setTextColor(Color.parseColor(task.calcTextColor()));
 
-        taskLayout.setBackgroundColor(Color.parseColor(task.backgroundColor));
+        taskLayout.setBackgroundColor(Color.parseColor(task.calcBackgroundColor()));
 
         taskLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 System.out.println("Task Clicked");
 
-                TextView startEndTimeTextView = (TextView) view.findViewById(R.id.schedule_list_row_start_end_time);
+/*                TextView startEndTimeTextView = (TextView) view.findViewById(R.id.schedule_list_row_start_end_time);
                 TextView dailyTotalTextView = (TextView) view.findViewById(R.id.schedule_list_row_daily_total);
-                Button editButton = (Button) view.findViewById(R.id.schedule_list_row_edit);
+                Button editButton = (Button) view.findViewById(R.id.schedule_list_row_edit);*/
 
                 if (startEndTimeTextView.getVisibility() != View.VISIBLE){
                     startEndTimeTextView.setVisibility(View.VISIBLE);
@@ -108,9 +108,9 @@ public class ListScheduleAdapter extends BaseAdapter {
             @Override
             public void onClick(View view){
                 System.out.println("Edit Clicked");
-                LinearLayout parentLayout=(LinearLayout) view.getParent();
+/*                LinearLayout parentLayout=(LinearLayout) view.getParent();
                 final TextView taskNameTextView = (TextView) parentLayout.findViewById(R.id.schedule_list_row_name);
-                final TextView startEndTimeTextView = (TextView) parentLayout.findViewById(R.id.schedule_list_row_start_end_time);
+                final TextView startEndTimeTextView = (TextView) parentLayout.findViewById(R.id.schedule_list_row_start_end_time);*/
 
                 String taskNameAndCategory[] = taskNameTextView.getText().toString().split(" - ", 2);
                 String taskName = taskNameAndCategory[0];
@@ -128,10 +128,10 @@ public class ListScheduleAdapter extends BaseAdapter {
                 LayoutInflater inflater = LayoutInflater.from(mContext);
                 View alertView = inflater.inflate(R.layout.edit_task_dialog, null);
 
-                EditText taskNameEditView = alertView.findViewById(R.id.edit_text_task_name);
-                EditText taskCategoryEditView = alertView.findViewById(R.id.edit_text_task_category);
-                EditText taskStartTimeEditView = alertView.findViewById(R.id.edit_text_task_start_time);
-                EditText taskEndTimeEditView = alertView.findViewById(R.id.edit_text_task_end_time);
+                final EditText taskNameEditView = alertView.findViewById(R.id.edit_text_task_name);
+                final EditText taskCategoryEditView = alertView.findViewById(R.id.edit_text_task_category);
+                final EditText taskStartTimeEditView = alertView.findViewById(R.id.edit_text_task_start_time);
+                final EditText taskEndTimeEditView = alertView.findViewById(R.id.edit_text_task_end_time);
 
                 taskNameEditView.setText(taskName);
                 taskCategoryEditView.setText(taskCategory);
@@ -142,12 +142,29 @@ public class ListScheduleAdapter extends BaseAdapter {
                 alertDialog.setTitle("Edit Task");
                 alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Confirm", new DialogInterface.OnClickListener(){
                    public void onClick(DialogInterface dialog, int which){
-                       EditText taskNameEditView = ((AlertDialog) dialog).findViewById(R.id.edit_text_task_name);
+/*                     EditText taskNameEditView = ((AlertDialog) dialog).findViewById(R.id.edit_text_task_name);
                        EditText taskCategoryEditView = ((AlertDialog) dialog).findViewById(R.id.edit_text_task_category);
                        EditText taskStartTimeEditView = ((AlertDialog) dialog).findViewById(R.id.edit_text_task_start_time);
-                       EditText taskEndTimeEditView = ((AlertDialog) dialog).findViewById(R.id.edit_text_task_end_time);
-                       taskNameTextView.setText(taskNameEditView.getText().toString() + " - " + taskCategoryEditView.getText().toString());
+                       EditText taskEndTimeEditView = ((AlertDialog) dialog).findViewById(R.id.edit_text_task_end_time);*/
+                        task.setName(taskNameEditView.getText().toString());
+                        task.setCategory(taskCategoryEditView.getText().toString());
+                       //taskNameTextView.setText(taskNameEditView.getText().toString() + " - " + taskCategoryEditView.getText().toString());
                        startEndTimeTextView.setText(taskStartTimeEditView.getText().toString() + " - " + taskEndTimeEditView.getText().toString());
+
+                       taskNameTextView.setText(task.getName() + " - " + task.getCategory());
+                       taskNameTextView.setTextColor(Color.parseColor(task.calcTextColor()));
+
+                       taskDurationTextView.setText("(" + task.calcDuration() +")");
+                       taskDurationTextView.setTextColor(Color.parseColor(task.calcTextColor()));
+
+                       startEndTimeTextView.setTextColor(Color.parseColor(task.calcTextColor()));
+
+                       dailyTotalTextView.setText("3 hours 25 minutes");
+                       dailyTotalTextView.setTextColor(Color.parseColor(task.calcTextColor()));
+
+                       taskLayout.setBackgroundColor(Color.parseColor(task.calcBackgroundColor()));
+
+                       timeTextView.setText(taskStartTimeEditView.getText().toString());
 
                        dialog.dismiss();
                    }
