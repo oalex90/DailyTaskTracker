@@ -103,7 +103,6 @@ public class ListScheduleAdapter extends BaseAdapter {
             }
         });
 
-        System.out.println("Edit Button Id: " + editButton.getId());
         editButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
