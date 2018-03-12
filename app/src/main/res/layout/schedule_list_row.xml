@@ -50,6 +50,15 @@
             android:gravity="center"
             android:text="(8 hours 25 minutes)" />
         <TextView
+            android:id="@+id/schedule_list_row_start_date"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="14sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="2018/3/4"/>
+        <TextView
             android:id="@+id/schedule_list_row_start_end_time"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -66,7 +75,7 @@
             android:textColor="#ffffff"
             android:visibility="gone"
             android:gravity="center"
-            android:text="Daily Total: 3 hours 25 minutes" />
+            android:text="Day Total: 3 hours 25 minutes" />
         <Button
             android:id="@+id/schedule_list_row_edit"
             android:layout_width="wrap_content"

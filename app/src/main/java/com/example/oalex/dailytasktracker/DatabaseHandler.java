@@ -43,7 +43,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_CATEGORY + " TEXT," + KEY_STARTTIME + " INTEGER,"
                 + KEY_ENDTIME + " INTEGER" + ")";
         db.execSQL(CREATE_TASKS_TABLE);
-        //db.close();
     }
 
     @Override
@@ -53,7 +52,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         // Create tables again
         onCreate(db);
-        //db.close();
     }
 
     /**
@@ -159,5 +157,68 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.delete(TABLE_TASKS, KEY_ID + " = ?",
                 new String[] {String.valueOf(task.getId())});
         db.close();
+    }
+
+    // Deleting all tasks
+    public void deleteAllTasks(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_TASKS, null, null);
+        db.close();
+    }
+
+    // Add test tasks
+    public void addTestTasks(){
+        //Initial Add to db of tasks
+        //Year is years after 1900, Month starts at 0
+        ArrayList <Task> testTasks = new ArrayList<Task>();
+        testTasks.add(new Task("Sleep", "Mandatory", new Date(118, 2, 4, 0, 0), new Date(118, 2, 4, 8, 4)));
+        testTasks.add(new Task("Reddit", "Entertainment", new Date(118, 2, 4, 8, 4), new Date(118, 2, 4, 8, 35)));
+        testTasks.add(new Task("Breakfast", "Mandatory", new Date(118, 2, 4, 8, 35), new Date(118, 2, 4, 9, 28)));
+        testTasks.add(new Task("Android Dev", "Learning", new Date(118, 2, 4, 9, 28), new Date(118, 2, 4, 12, 1)));
+        testTasks.add(new Task("Schedule", "Productive", new Date(118, 2, 4, 12, 01), new Date(118, 2, 4, 12, 21)));
+        testTasks.add(new Task("Fun", "Entertainment", new Date(118, 2, 4, 12, 21), new Date(118, 2, 4, 12, 58)));
+        testTasks.add(new Task("Spanish Movie", "Spanish", new Date(118, 2, 4, 12, 58), new Date(118, 2, 4, 14, 25)));
+        testTasks.add(new Task("Spanish Game", "Spanish", new Date(118, 2, 4, 14, 25), new Date(118, 2, 4, 16, 11)));
+        testTasks.add(new Task("Stair Master", "Exercise", new Date(118, 2, 4, 16, 11), new Date(118, 2, 4, 17, 40)));
+        testTasks.add(new Task("Watch Soccer", "Entertainment", new Date(118, 2, 4, 17, 40), new Date(118, 2, 4, 18, 4)));
+        testTasks.add(new Task("Shower", "Mandatory", new Date(118, 2, 4, 18, 4), new Date(118, 2, 4, 18, 35)));
+        testTasks.add(new Task("Dinner", "Mandatory", new Date(118, 2, 4, 18, 35), new Date(118, 2, 4, 19, 2)));
+        testTasks.add(new Task("Game of Thrones", "Social", new Date(118, 2, 4, 19, 2), new Date(118, 2, 4, 20, 47)));
+        testTasks.add(new Task("Rocket League", "Entertainment", new Date(118, 2, 4, 20, 47), new Date(118, 2, 4, 22, 56)));
+        testTasks.add(new Task("Twitch", "Entertainment", new Date(118, 2, 4, 22, 56), new Date(118, 2, 5, 0, 0)));
+        testTasks.add(new Task("Sleep", "Mandatory", new Date(118, 2, 5, 0, 0), new Date(118, 2, 5, 8, 4)));
+        testTasks.add(new Task("Reddit", "Entertainment", new Date(118, 2, 5, 8, 4), new Date(118, 2, 5, 8, 35)));
+        testTasks.add(new Task("Breakfast", "Mandatory", new Date(118, 2, 5, 8, 35), new Date(118, 2, 5, 9, 28)));
+        testTasks.add(new Task("Android Dev", "Learning", new Date(118, 2, 5, 9, 28), new Date(118, 2, 5, 12, 1)));
+        testTasks.add(new Task("Schedule", "Productive", new Date(118, 2, 5, 12, 1), new Date(118, 2, 5, 12, 21)));
+        testTasks.add(new Task("Fun", "Entertainment", new Date(118, 2, 5, 12, 21), new Date(118, 2, 5, 12, 58)));
+        testTasks.add(new Task("Spanish Movie", "Spanish", new Date(118, 2, 5, 12, 58), new Date(118, 2, 5, 14, 25)));
+        testTasks.add(new Task("Spanish Game", "Spanish", new Date(118, 2, 5, 14, 25), new Date(118, 2, 5, 16, 11)));
+        testTasks.add(new Task("Stair Master", "Exercise", new Date(118, 2, 5, 16, 11), new Date(118, 2, 5, 17, 40)));
+        testTasks.add(new Task("Watch Soccer", "Entertainment", new Date(118, 2, 5, 17, 40), new Date(118, 2, 5, 18, 4)));
+        testTasks.add(new Task("Shower", "Mandatory", new Date(118, 2, 5, 18, 4), new Date(118, 2, 5, 18, 35)));
+        testTasks.add(new Task("Dinner", "Mandatory", new Date(118, 2, 5, 18, 35), new Date(118, 2, 5, 19, 2)));
+        testTasks.add(new Task("Game of Thrones", "Social", new Date(118, 2, 5, 19, 2), new Date(118, 2, 5, 20, 47)));
+        testTasks.add(new Task("Rocket League", "Entertainment", new Date(118, 2, 5, 20, 47), new Date(118, 2, 5, 22, 56)));
+        testTasks.add(new Task("Twitch", "Entertainment", new Date(118, 2, 5, 22, 56), new Date(118, 2, 6, 0, 0)));
+        testTasks.add(new Task("Sleep", "Mandatory", new Date(118, 2, 6, 0, 0), new Date(118, 2, 6, 8, 4)));
+        testTasks.add(new Task("Reddit", "Entertainment", new Date(118, 2, 6, 8, 4), new Date(118, 2, 6, 8, 35)));
+        testTasks.add(new Task("Breakfast", "Mandatory", new Date(118, 2, 6, 8, 35), new Date(118, 2, 6, 9, 28)));
+        testTasks.add(new Task("Android Dev", "Learning", new Date(118, 2, 6, 9, 28), new Date(118, 2, 6, 12, 1)));
+        testTasks.add(new Task("Schedule", "Productive", new Date(118, 2, 6, 12, 1), new Date(118, 2, 6, 12, 21)));
+        testTasks.add(new Task("Fun", "Entertainment", new Date(118, 2, 6, 12, 21), new Date(118, 2, 6, 12, 58)));
+        testTasks.add(new Task("Spanish Movie", "Spanish", new Date(118, 2, 6, 12, 58), new Date(118, 2, 6, 14, 25)));
+        testTasks.add(new Task("Spanish Game", "Spanish", new Date(118, 2, 6, 14, 25), new Date(118, 2, 6, 16, 11)));
+        testTasks.add(new Task("Stair Master", "Exercise", new Date(118, 2, 6, 16, 11), new Date(118, 2, 6, 17, 40)));
+        testTasks.add(new Task("Watch Soccer", "Entertainment", new Date(118, 2, 6, 17, 40), new Date(118, 2, 6, 18, 4)));
+        testTasks.add(new Task("Shower", "Mandatory", new Date(118, 2, 6, 18, 4), new Date(118, 2, 6, 18, 35)));
+        testTasks.add(new Task("Dinner", "Mandatory", new Date(118, 2, 6, 18, 35), new Date(118, 2, 6, 19, 2)));
+        testTasks.add(new Task("Game of Thrones", "Social", new Date(118, 2, 6, 19, 2), new Date(118, 2, 6, 20, 47)));
+        testTasks.add(new Task("Rocket League", "Entertainment", new Date(118, 2, 6, 20, 47), new Date(118, 2, 6, 22, 56)));
+        testTasks.add(new Task("Twitch", "Entertainment", new Date(118, 2, 6, 22, 56), new Date(118, 2, 7, 0, 0)));
+
+        for (Task t: testTasks){
+            addTask(t);
+        }
     }
 }
